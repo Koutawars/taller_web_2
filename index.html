@@ -22,7 +22,7 @@
         </header>
         <nav>
             <div class="nav-wrapper light-blue lighten-1">
-                <ul class="left hide-on-med-and-down">
+                <ul class="left">
                 <li><a href="listar.html">Inicio</a></li>
                 <li><a href="listar.html">Lista Propietario</a></li>
                 <li class="active"><a href="Index.html">Agregar Mascotas</a></li>
@@ -30,7 +30,7 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col s7">
+            <div class="col l7 s12">
                 <table>
                     <thead>
                         <tr>
@@ -42,18 +42,11 @@
                         </tr>
                     </thead>
             
-                    <tbody>
-                        <tr>
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td>cra 7</td>
-                        <td>3554142</td>
-                        <td>$0.87</td>
-                        </tr>
+                    <tbody id="listaprop">
                     </tbody>
                 </table>
             </div>
-            <div class="col s5">
+            <div class="col l5 s12">
                 <h4>
                     Agregar propietario
                 </h4>
@@ -71,7 +64,7 @@
                         <label for="direccion">Direccion</label>
                     </div>
                     <div class="input-field">
-                        <input id="direccion" type="text" class="validate">
+                        <input id="telefono" type="text" class="validate">
                         <label for="telefono">Telefono</label>
                     </div>
                     <a id="agregar" class="waves-effect waves-light btn">Agregar</a>
@@ -82,5 +75,7 @@
     </main>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/materialize.min.js"></script>
+    <script src="js/propietarios.class.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
