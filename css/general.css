@@ -1,0 +1,11 @@
+#logo {
+    margin: 2.3733333333rem 0 1.424rem 0;
+}
+.clear {
+    clear: both;
+}
+@media (max-width: 660px)  {
+    #titulo > h2 {
+        font-size: 3.0rem!important;
+    }
+}
