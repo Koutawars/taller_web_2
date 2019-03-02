@@ -9,3 +9,6 @@
         font-size: 3.0rem!important;
     }
 }
+a.det {
+    cursor: pointer;
+}

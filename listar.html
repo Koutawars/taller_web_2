@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Agregar Mascotas</title>
+    <title>Listar propietarios</title>
     <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="css/general.css">
 </head>
@@ -29,17 +29,68 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col s6">
-                kkasd
-            </div>
-            <div class="col s6">
-                asdasdasd
+            <div class="row">
+                <span class="center col s12">
+                    <h5>
+                        Listar propietarios
+                    </h5>
+                </span>
+                <div class="col l7 s12">
+                    <h5>
+                        Listado de propietarios
+                    </h5>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Dirección</th>
+                                <th>Télefono</th>
+                                <th>Opción</th>
+                            </tr>
+                        </thead>
+                
+                        <tbody id="listaprop">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col l5 s12">
+                    <h5 class="center">
+                        Ver/Editar detalle del propietario 
+                    </h5>
+                    <form>
+                        <label for="nombres">Nombres</label>
+                        <input id="nombres" type="text" class="validate">
+                        <div class="clear" ></div>
+                        <label for="apellidos">Apellidos</label>
+                        <input id="apellidos" type="text" class="validate">
+                        <div class="clear" ></div>
+                        <label for="direccion">Direccion</label>
+                        <input id="direccion" type="text" class="validate">
+                        <div class="clear" ></div>
+                        <label for="telefono">Telefono</label>
+                        <input id="telefono" type="number" class="validate">
+                        <a id="editar" class="waves-effect waves-light btn">Editar</a>
+                    </form>
+                    <table id="tablaMasc">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Opción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaMasc">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/propietarios.class.js"></script>
-    
+    <script src="js/listar.js"></script>
 </body>
 </html>
