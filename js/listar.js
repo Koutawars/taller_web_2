@@ -5,6 +5,7 @@ $( document ).ready(
         props.push(new Propietario("Carlos", "Campo", "Calle 10", "466563"));
         props[0].mascotas.push(new Mascota('Nasus', 'Perro', 'dic 6'));
         props[1].mascotas.push(new Mascota('Rengar', 'Gato', 'oct 6'));
+        props[1].mascotas.push(new Mascota('Rengar', 'Gato', 'oct 6'));
 
         var propsSelect;
 
@@ -27,7 +28,7 @@ $( document ).ready(
                 $('#listaMasc').html('');
                 propsSelect = index;
                 props[index].mascotas.forEach(masc => {
-                    agregarMasc(masc);
+                    agregarMasc(masc, props[index].mascotas.indexOf(masc));
                 });
             });
         }
@@ -57,19 +58,51 @@ $( document ).ready(
                     $('#telefono').val(props[propsSelect].telefono);
                     $('#listaMasc').html('');
                     props[propsSelect].mascotas.forEach(masc => {
-                        agregarMasc(masc);
+                        agregarMasc(masc, props[propsSelect].mascotas.indexOf(masc));
                     });
                 });
             }
         });
 
-        function agregarMasc(masc){
-            let tr = document.createElement("tr");
+        function agregarMasc(masc, index, crear = true, nam = null){
+            if(crear){
+                var tr = document.createElement("tr");
+                tr.setAttribute("name", masc.nombre+index);
+            }else{
+                $('tr[name='+(nam+index)+']').attr('name', masc.nombre+index);
+            }
             let text = "<td>"+masc.nombre+"</td>";
             text += "<td>"+masc.tipo+"</td>";
             text += "<td>"+masc.fecha+"</td>";
-            tr.innerHTML = text;
-            $("#listaMasc").append(tr);
+            text += `<td><a class="det" id="${masc.nombre+index}">Editar</a></td>`;
+            if(crear){
+                $("#listaMasc").append(tr);
+            }
+            $('tr[name='+(masc.nombre+index)+']').html(text);
+
+
+            $('#'+masc.nombre+index).click(function(){
+                $('tr[name='+(masc.nombre+index)+']').html('');
+                let text = `<td><input id="nombre${index}" value="${masc.nombre}"> </input> </td>`;
+                text += `<td><input id="tipo${index}" value="${masc.tipo}"> </input> </td>`;
+                text += `<td><input id="fecha${index}" value="${masc.fecha}"> </input> </td>`;
+                text += `<td><a class="datepicker det" id="${masc.nombre+index}">Guardar</a></td>`;
+                $('tr[name='+(masc.nombre+index)+']').html(text);
+                $('#fecha'+index).datepicker();
+                $('#'+masc.nombre+index).click(function(){
+                    let nombreAnterior = masc.nombre;
+                    let nom = $('#nombre'+index).val();
+                    let tip = $('#tipo'+index).val();
+                    let fec = $('#fecha'+index).val();
+                    if(nom !='' && tip != '' && fec != ''){
+                        props[propsSelect].mascotas[index].nombre = nom;
+                        props[propsSelect].mascotas[index].tipo = tip;
+                        props[propsSelect].mascotas[index].fecha = fec;
+                        $('tr[name='+(masc.nombre+index)+']').html('');
+                        agregarMasc(props[propsSelect].mascotas[index], index, false, nombreAnterior);
+                    }
+                });
+            });
         }
 
         props.forEach(function(prop){
