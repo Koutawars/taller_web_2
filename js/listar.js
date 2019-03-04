@@ -84,10 +84,25 @@ $( document ).ready(
             $('#'+masc.nombre+index).click(function(){
                 $('tr[name='+(masc.nombre+index)+']').html('');
                 let text = `<td><input id="nombre${index}" value="${masc.nombre}"> </input> </td>`;
-                text += `<td><input id="tipo${index}" value="${masc.tipo}"> </input> </td>`;
+                text += `
+                <td>
+                    <select id="tipo${index}" >
+                        <option value="" disabled>Tipo de mascota</option>
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Leon">Leon</option>
+                        <option value="Ave">Ave</option>
+                    </select>
+                </td>
+                `;
                 text += `<td><input id="fecha${index}" value="${masc.fecha}"> </input> </td>`;
                 text += `<td><a class="datepicker det" id="${masc.nombre+index}">Guardar</a></td>`;
                 $('tr[name='+(masc.nombre+index)+']').html(text);
+
+                $('#tipo'+index).formSelect();
+                $('#tipo'+index).val(masc.tipo);
+                $('#tipo'+index).formSelect();
+
                 $('#fecha'+index).datepicker();
                 $('#'+masc.nombre+index).click(function(){
                     let nombreAnterior = masc.nombre;
